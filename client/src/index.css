@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Header {
+  min-height: 6vmin;
+  padding: 20px;
+  background-color: aquamarine;
+}
+
+.App-logo {
+  height: 4vmin;
+  pointer-events: none;
+}
