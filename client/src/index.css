@@ -12,13 +12,40 @@ code {
     monospace;
 }
 
-.Header {
+.header {
   min-height: 6vmin;
-  padding: 20px;
-  background-color: aquamarine;
+  padding: 20px 0 12px;
+  background-color: white;
+  border-bottom: #c8d6e5 solid 0.2px;
+  margin-bottom: 20px;
 }
 
-.App-logo {
+.logo-wrapper {
+  display: flex;
+  justify-content: left;
+}
+
+.icons-wrapper {
+  display: flex;
+  justify-content: right;
+}
+
+.icon-circle-wrapper {
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  
+  justify-content: center;
+  align-items: center;
+  
+  width: 40px;
+  height: 40px;
+  background-color: #c8d6e5;
+  border-radius: 100px;
+}
+
+.logo {
   height: 4vmin;
   pointer-events: none;
 }
