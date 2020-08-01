@@ -14,6 +14,12 @@ class HomeScreen extends React.PureComponent {
             <PokemonCard />
             <PokemonCard />
             <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
+            <PokemonCard />
           </Row>
         </Container>
       </>

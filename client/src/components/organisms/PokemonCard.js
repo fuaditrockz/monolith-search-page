@@ -9,7 +9,7 @@ class PokemonCard extends React.Component {
     return (
       <Col
         className='pokemon-card'
-        md={3}
+        md={4}
       >
         <Row className='pl-3 pokemon-card-header'>
           <Col>

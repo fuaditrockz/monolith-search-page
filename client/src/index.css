@@ -67,9 +67,7 @@ code {
   background-color: #ff7979;
 }
 
-.pokemon-card:nth-last-child(2) {
-  height: 350px;
-  padding: 20px;
+.pokemon-card:nth-child(even)  {
   background-color: #f9ca24;
 }
 
