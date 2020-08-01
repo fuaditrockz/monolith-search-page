@@ -1,8 +1,7 @@
+@import url(//fonts.googleapis.com/css?family=Roboto:300,400,500,900,900i);
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,6 +9,19 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.white {
+  color: #fff !important;
+  font-family: Roboto;
+}
+
+.bold {
+  font-weight: 900;
+}
+
+.thin {
+  font-weight: 300;
 }
 
 .header {
@@ -73,6 +85,19 @@ code {
 
 .pokemon-card-footer .pokemon-sign {
   text-align: right;
+}
+
+.pokemon-card-footer .pokemon-sign div{
+  display: flex;
+  align-items: baseline;
+  text-align: right;
+  float: right;
+}
+
+.mini-rect {
+  width: 10px !important;
+  height: 10px;
+  background-color: #fff;
 }
 
 .pokemon-image {

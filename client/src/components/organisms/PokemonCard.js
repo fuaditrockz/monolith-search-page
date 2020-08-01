@@ -11,10 +11,10 @@ class PokemonCard extends React.Component {
         className='pokemon-card'
         md={3}
       >
-        <Row className='pl-3'>
+        <Row className='pl-3 pokemon-card-header'>
           <Col>
-            <h3>LAPRAS</h3>
-            <h5>#131</h5>
+            <h3 className='white bold mb-0'>RIZAL</h3>
+            <h5 className='white thin'>#131</h5>
           </Col>
         </Row>
         <Row>
@@ -24,10 +24,13 @@ class PokemonCard extends React.Component {
         </Row>
         <Row className='pl-3 pr-3 pokemon-card-footer'>
           <Col md={6} className='pokemon-type'>
-            <h5>Water</h5>
+            <h5 className='white thin'>Water</h5>
           </Col>
           <Col md={6} className='pokemon-sign'>
-            <h5>Pokemon</h5>
+            <div>
+              <div className='mini-rect mr-2' /> 
+              <h5 className='white thin'>Pokémon</h5>
+            </div>
           </Col>
         </Row>
       </Col>
