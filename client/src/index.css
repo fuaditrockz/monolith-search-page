@@ -50,6 +50,37 @@ code {
 }
 
 .pokemon-card {
-  height: 300px;
-  border: chocolate solid 0.5px;
+  height: 350px;
+  padding: 20px;
+  background-color: #ff7979;
+}
+
+.pokemon-card:nth-last-child(2) {
+  height: 350px;
+  padding: 20px;
+  background-color: #f9ca24;
+}
+
+.pokemon-card-footer {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+}
+
+.pokemon-card-footer .pokemon-type {
+  text-align: left;
+}
+
+.pokemon-card-footer .pokemon-sign {
+  text-align: right;
+}
+
+.pokemon-image {
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  
+  justify-content: center;
+  align-items: center;
 }
