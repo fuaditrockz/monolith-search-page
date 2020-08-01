@@ -17,7 +17,6 @@ code {
   padding: 20px 0 12px;
   background-color: white;
   border-bottom: #c8d6e5 solid 0.2px;
-  margin-bottom: 20px;
 }
 
 .logo-wrapper {
@@ -48,4 +47,9 @@ code {
 .logo {
   height: 4vmin;
   pointer-events: none;
+}
+
+.pokemon-card {
+  height: 300px;
+  border: chocolate solid 0.5px;
 }
