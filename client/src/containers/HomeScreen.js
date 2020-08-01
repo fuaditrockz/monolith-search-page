@@ -8,7 +8,9 @@ class HomeScreen extends React.PureComponent {
   render() {
     return (
       <>
-        <Header />
+        <Container fluid>
+          <Header />
+        </Container>
         <Container fluid>
           <Row>
             <PokemonCard />
