@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const uniqueValidator = require('mongooose-unique-validator')
+const uniqueValidator = require('mongoose-unique-validator')
 
 const Pokemon = mongoose.Schema({
   name: { type: String, required: true },
@@ -17,6 +17,6 @@ const Pokemon = mongoose.Schema({
   updated_at: { type: Date, default: Date.now }
 })
 
-Pokemon.plugins(uniqueValidator)
+Pokemon.plugin(uniqueValidator)
 
 module.exports = mongoose.model('pokemon', Pokemon)
