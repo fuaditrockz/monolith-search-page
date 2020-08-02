@@ -9,14 +9,14 @@ router.post('/pokemon', function(req, res, next) {
     const payload = _addPokemon(req.body)
     return payload
   })
-    .then(response => {
-      console.log('test', response)
-      res.send(response)
-    })
-    .catch(err => {
-      console.log(err)
-      res.send(err)
-    })
+  .then(response => {
+    console.log('test', response)
+    res.send(response)
+  })
+  .catch(err => {
+    console.log(err)
+    res.send(err)
+  })
 })
 
 module.exports = router
