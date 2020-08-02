@@ -1,13 +1,18 @@
 const PokemonModel = require('../../models/Pokemon')
 
-exports._addPokemon = data => {
-  const totalPokemoninDB = 1
-  const addedPokemon = PokemonModel({
+exports._addPokemon = async data => {
+  const totalPokemoninDB = await PokemonModel.countDocuments({}, (err, res) => {
+    return res
+  })
+
+  console.log(totalPokemoninDB)
+
+  const addedPokemon = await PokemonModel({
     ...data,
     productNumber: totalPokemoninDB + 1
   })
 
-  const result = addedPokemon.save().then(res => {
+  const result = await addedPokemon.save().then(res => {
     console.log(res)
     return {
       error: false,
