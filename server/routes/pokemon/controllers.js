@@ -1,4 +1,8 @@
 const PokemonModel = require('../../models/Pokemon')
+const {
+  GET_RESPONSE,
+  POST_RESPONSE
+} = require('../../helpers/responsers')
 
 exports._addPokemon = async data => {
   const totalPokemoninDB = await PokemonModel.countDocuments({}, (err, res) => {
@@ -13,22 +17,27 @@ exports._addPokemon = async data => {
   })
 
   const result = await addedPokemon.save().then(res => {
-    console.log(res)
-    return {
-      error: false,
-      message: 'Success created!',
-      id: res._id,
-      name: res.name,
-      product_number: res.product_number
-    }
+    return POST_RESPONSE.success(res)
   })
   .catch(err => {
-    console.log(err)
-    return {
-      error: true,
-      ...err
-    }
+    return POST_RESPONSE.error(err)
   })
 
   return result
+}
+
+exports._getAllPokemon = async () => {
+  const allPokemon = await PokemonModel.find({}, (err, res) => {
+    return err ? err : res
+  })
+
+  if (!allPokemon) {
+    return GET_RESPONSE.error(err)
+  }
+
+  return GET_RESPONSE.success(
+    false,
+    'pokemon',
+    allPokemon
+  )
 }
