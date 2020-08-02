@@ -26,7 +26,7 @@ exports._addPokemon = async data => {
     console.log(err)
     return {
       error: true,
-      message: err
+      ...err
     }
   })
 
