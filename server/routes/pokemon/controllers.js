@@ -9,7 +9,7 @@ exports._addPokemon = async data => {
 
   const addedPokemon = await PokemonModel({
     ...data,
-    productNumber: totalPokemoninDB + 1
+    product_number: totalPokemoninDB + 1
   })
 
   const result = await addedPokemon.save().then(res => {
@@ -18,7 +18,8 @@ exports._addPokemon = async data => {
       error: false,
       message: 'Success created!',
       id: res._id,
-      name: res.name
+      name: res.name,
+      product_number: res.product_number
     }
   })
   .catch(err => {
