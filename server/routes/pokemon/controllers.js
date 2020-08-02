@@ -9,11 +9,19 @@ exports._addPokemon = data => {
 
   const result = addedPokemon.save().then(res => {
     console.log(res)
-    return res
+    return {
+      error: false,
+      message: 'Success created!',
+      id: res._id,
+      name: res.name
+    }
   })
   .catch(err => {
     console.log(err)
-    return err
+    return {
+      error: true,
+      message: err
+    }
   })
 
   return result
