@@ -10,11 +10,9 @@ router.post('/pokemon', (req, res, next) => {
     return payload
   })
   .then(response => {
-    console.log('test', response)
     res.send(response)
   })
   .catch(err => {
-    console.log(err)
     res.send(err)
   })
 })
@@ -25,11 +23,9 @@ router.get('/pokemon', (req, res, next) => {
     return payload
   })
   .then(response => {
-    console.log(response)
     res.send(response)
   })
   .catch(err => {
-    console.log(err)
     res.send(err)
   })
 })
