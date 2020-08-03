@@ -1,10 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
-import { FiPlusCircle, FiSearch } from 'react-icons/fi'
 
 import logo from '../../assets/pokemon.svg'
-import HeaderIcon from '../molecules/HeaderIcon'
+import RightHeader from '../molecules/RightHeader'
 
 const Header = () => {
   return (
@@ -18,16 +17,7 @@ const Header = () => {
             </Row>
           </Link>
         </Col>
-        <Col xs lg="10" className='icons-wrapper'>
-          <Row className='pr-5'>
-            <HeaderIcon description='Search Pokemon' key='search-pokemon'>
-              <FiSearch size={20} />
-            </HeaderIcon>
-            <HeaderIcon description='Add Pokemon' key='add-pokemon'>
-              <FiPlusCircle size={20} />
-            </HeaderIcon>
-          </Row>
-        </Col>
+        <RightHeader />
       </Row>
     </div>
   )
