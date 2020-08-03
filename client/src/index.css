@@ -1,4 +1,4 @@
-@import url(//fonts.googleapis.com/css?family=Roboto:300,400,500,900,900i);
+@import url(//fonts.googleapis.com/css?family=Roboto:300,400,500,800,900,900i);
 
 body {
   margin: 0;
@@ -17,6 +17,15 @@ a {
 
 a:hover {
   text-decoration: none !important;
+}
+
+.form-label {
+  font-family: Roboto;
+  font-weight: 800;
+}
+.card-header {
+  background-color: rgb(231, 73, 69) !important;
+  color: #fff;
 }
 
 .white {
