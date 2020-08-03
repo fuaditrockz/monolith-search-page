@@ -3,7 +3,7 @@ import { Container, Row, } from 'react-bootstrap'
 
 import PokemonCard from '../components/organisms/PokemonCard'
 
-class HomeScreen extends React.PureComponent {
+class HomeScreen extends React.Component {
   render() {
     return (
       <Container fluid>
