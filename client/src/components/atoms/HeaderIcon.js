@@ -2,14 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 
-const HeaderIcon = ({ children, description, key }) => {
+const HeaderIcon = ({ children, description, name }) => {
   return (
-    <Link to='/' className='ml-3'>
+    <Link to={`/${name}`} className='ml-3'>
       <OverlayTrigger
-        key={key}
+        key={name}
         placement='bottom'
         overlay={
-          <Tooltip id={key}>
+          <Tooltip id={name}>
             {description}
           </Tooltip>
         }
