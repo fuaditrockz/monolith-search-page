@@ -129,3 +129,17 @@ a:hover {
   justify-content: center;
   align-items: center;
 }
+
+.radio-pokemon-type {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  border: #c8d6e5 solid 0.5px;
+  border-radius: 5px;
+  padding: 10px 30px;
+}
+
+.radio-pokemon-type:hover {
+  border-color: #ff7979;
+}

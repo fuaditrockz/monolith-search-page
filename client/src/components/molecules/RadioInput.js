@@ -12,13 +12,16 @@ const RadioInput = ({
     return values.map((type, index) => {
       return (
         <Col md={2}>
-          <Form.Check
-            key={index}
-            type="radio"
-            label={type}
-            name={type.toLocaleLowerCase()}
-            id={type.toLowerCase()}
-          />
+          <div className='radio-pokemon-type mb-3'>
+            <Form.Check
+              key={index}
+              type="radio"
+              name={type.name.toLocaleLowerCase()}
+              id={type.name.toLowerCase()}
+            />
+            <img src={type.icon} width={20} />
+            <p className='mb-0 ml-1'>{type.name}</p>
+          </div>
         </Col>
       )
     })

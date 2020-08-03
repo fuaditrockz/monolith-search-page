@@ -1,30 +1,10 @@
 import React from 'react'
 import { Card, Form } from 'react-bootstrap'
 
+import { POKEMON_TYPE } from '../../constants'
+
 import TextInput from '../molecules/TextInput'
 import RadioInput from '../molecules/RadioInput'
-
-const pokemonType = [
-  'Normal',
-  'Fire',
-  'Fighting',
-  'Water',
-  'Flying',
-  'Grass',
-  'Poison',
-  'Electric',
-  'Ground',
-  'Psychic',
-  'Rock',
-  'Ice',
-  'Bug',
-  'Dragon',
-  'Ghost',
-  'Dark',
-  'Steel',
-  'Fairy',
-  '???'
-]
 
 class AddPokemonForm extends React.Component {
   render() {
@@ -47,7 +27,7 @@ class AddPokemonForm extends React.Component {
             <RadioInput
               controlId='pokemon-type'
               labelName='Pokemon Type'
-              radioValues={pokemonType}
+              radioValues={POKEMON_TYPE}
             />
           </Form>
         </Card.Body>
