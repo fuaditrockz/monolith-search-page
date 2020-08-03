@@ -7,7 +7,23 @@ import TextInput from '../molecules/TextInput'
 import RadioInput from '../molecules/RadioInput'
 
 class AddPokemonForm extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      pokemonType: null
+    }
+    this.onChangePokemonType = this.onChangePokemonType.bind(this)
+  }
+
+  onChangePokemonType(e) {
+    console.log(e.target.value)
+    this.setState({
+      pokemonType: e.target.value
+    })
+  }
+
   render() {
+    const { pokemonType } = this.state 
     return (
       <Card
         bg='light'
@@ -28,6 +44,23 @@ class AddPokemonForm extends React.Component {
               controlId='pokemon-type'
               labelName='Pokemon Type'
               radioValues={POKEMON_TYPE}
+              defaultValue={pokemonType}
+              onChangeValue={this.onChangePokemonType}
+            />
+            <TextInput
+              controlId='pokemon-category'
+              labelName='Pokemon Category'
+              placeholder='eg; Mouse, Rabbit etc.,'
+            />
+            <TextInput
+              controlId='pokemon-image'
+              labelName='Pokemon Image'
+              placeholder='eg; https://domain.com/image.png'
+            />
+            <TextInput
+              controlId='pokemon-image'
+              labelName='Pokemon Image'
+              placeholder='eg; https://domain.com/image.png'
             />
           </Form>
         </Card.Body>

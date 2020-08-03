@@ -6,7 +6,9 @@ import InputLabel from '../atoms/InputLabel'
 const RadioInput = ({
   controlId,
   labelName,
-  radioValues
+  radioValues,
+  defaultValue,
+  onChangeValue
 }) => {
   const renderValueList = (values) => {
     return values.map((type, index) => {
@@ -16,8 +18,11 @@ const RadioInput = ({
             <Form.Check
               key={index}
               type="radio"
+              value={type.name}
+              checked={defaultValue === type.name}
               name={type.name.toLocaleLowerCase()}
               id={type.name.toLowerCase()}
+              onChange={onChangeValue}
             />
             <img src={type.icon} width={20} />
             <p className='mb-0 ml-1'>{type.name}</p>
