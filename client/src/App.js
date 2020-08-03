@@ -9,6 +9,7 @@ import { Container, Row, } from 'react-bootstrap'
 import Header from './components/organisms/Header'
 
 import HomeScreen from './containers/HomeScreen'
+import AddPokemonScreen from './containers/AddPokemonScreen'
 
 function App() {
   return (
@@ -17,6 +18,9 @@ function App() {
         <Header />
       </Container>
       <Switch>
+        <Route path='/add-pokemon'>
+          <AddPokemonScreen />
+        </Route>
         <Route path='/'>
           <HomeScreen />
         </Route>
