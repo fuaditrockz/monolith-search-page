@@ -20,11 +20,11 @@ const Header = () => {
         </Col>
         <Col xs lg="10" className='icons-wrapper'>
           <Row className='pr-5'>
-            <HeaderIcon>
-              <FiSearch />
+            <HeaderIcon description='Search Pokemon' key='search-pokemon'>
+              <FiSearch size={20} />
             </HeaderIcon>
-            <HeaderIcon>
-              <FiPlusCircle />
+            <HeaderIcon description='Add Pokemon' key='add-pokemon'>
+              <FiPlusCircle size={20} />
             </HeaderIcon>
           </Row>
         </Col>

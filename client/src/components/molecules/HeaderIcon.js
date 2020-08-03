@@ -1,12 +1,24 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { OverlayTrigger, Tooltip } from 'react-bootstrap'
 
-const HeaderIcon = ({ children }) => {
+const HeaderIcon = ({ children, description, key }) => {
   return (
-    <a href='#' className='ml-2'>
-      <div className='icon-circle-wrapper'>
-        {children}
-      </div>
-    </a>
+    <Link to='/' className='ml-3'>
+      <OverlayTrigger
+        key={key}
+        placement='bottom'
+        overlay={
+          <Tooltip id={key}>
+            {description}
+          </Tooltip>
+        }
+      >
+        <div className='icon-circle-wrapper'>
+          {children}
+        </div>
+      </OverlayTrigger>
+    </Link>
   )
 }
 
