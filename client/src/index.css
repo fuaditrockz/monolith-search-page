@@ -11,6 +11,10 @@ code {
     monospace;
 }
 
+a {
+  color: #353b48 !important;
+}
+
 a:hover {
   text-decoration: none !important;
 }

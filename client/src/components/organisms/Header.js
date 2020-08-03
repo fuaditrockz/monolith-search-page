@@ -1,6 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
+import { FiPlusCircle, FiSearch } from 'react-icons/fi'
+
 import logo from '../../assets/pokemon.svg'
 import HeaderIcon from '../molecules/HeaderIcon'
 
@@ -18,7 +20,12 @@ const Header = () => {
         </Col>
         <Col xs lg="10" className='icons-wrapper'>
           <Row className='pr-5'>
-            <HeaderIcon iconName='search' />
+            <HeaderIcon>
+              <FiSearch />
+            </HeaderIcon>
+            <HeaderIcon>
+              <FiPlusCircle />
+            </HeaderIcon>
           </Row>
         </Col>
       </Row>

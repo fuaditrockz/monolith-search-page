@@ -1,15 +1,10 @@
 import React from 'react'
-import Icon from '../atoms/Icon'
 
-const HeaderIcon = ({ iconName }) => {
+const HeaderIcon = ({ children }) => {
   return (
-    <a href='#'>
+    <a href='#' className='ml-2'>
       <div className='icon-circle-wrapper'>
-        <Icon
-          name={iconName}
-          size={15}
-          color='#222f3e'
-        />
+        {children}
       </div>
     </a>
   )
