@@ -15,8 +15,10 @@ export default class Input extends React.Component {
       isDecimal,
       maxNumber,
       unit,
+      defaultValue,
       value,
-      onChange
+      onChange,
+      onClickInputButton
     } = this.props
     switch (type) {
       case 'text':
@@ -24,7 +26,8 @@ export default class Input extends React.Component {
           <Form.Control
             type={type}
             placeholder={placeholder}
-            defaultValue={value}
+            defaultValue={defaultValue}
+            value={value}
             onChange={onChange}
           />
         )
@@ -33,7 +36,8 @@ export default class Input extends React.Component {
           <InputGroup>
             <Form.Control
               type={type}
-              defaultValue={value}
+              defaultValue={defaultValue}
+              value={value}
               placeholder={placeholder}
               step={isDecimal && '0.01'}
               min={isDecimal && '0'}
@@ -51,11 +55,12 @@ export default class Input extends React.Component {
             <Form.Control
               type="text"
               placeholder={placeholder}
-              defaultValue={value}
+              defaultValue={defaultValue}
+              value={value}
               onChange={onChange}
             />
             <InputGroup.Append>
-              <Button variant="primary">{buttonTitle}</Button>
+              <Button variant="primary" onClick={onClickInputButton}>{buttonTitle}</Button>
             </InputGroup.Append>
           </InputGroup>
         )
@@ -63,7 +68,8 @@ export default class Input extends React.Component {
         return (
           <Form.Control
             as="textarea"
-            defaultValue={value}
+            defaultValue={defaultValue}
+            value={value}
             aria-label="With textarea"
             placeholder={placeholder}
             onChange={onChange}
@@ -74,7 +80,8 @@ export default class Input extends React.Component {
           <Form.Control
             type='text'
             placeholder={placeholder}
-            defaultValue={value}
+            defaultValue={defaultValue}
+            value={value}
             onChange={onChange}
           />
         )
