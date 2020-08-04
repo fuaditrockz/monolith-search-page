@@ -3,9 +3,8 @@ import { Card, Form } from 'react-bootstrap'
 
 import { POKEMON_TYPE } from '../../constants'
 
-import TextInput from '../molecules/TextInput'
+import Input from '../molecules/Input'
 import RadioInput from '../molecules/RadioInput'
-import TextInputWithButton from '../molecules/TextInputWithButton'
 
 class AddPokemonForm extends React.Component {
   constructor(props) {
@@ -36,7 +35,8 @@ class AddPokemonForm extends React.Component {
         <Card.Header>Add Pokemon</Card.Header>
         <Card.Body>
           <Form>
-            <TextInput
+            <Input
+              type='text'
               controlId='pokemon-name'
               labelName='Pokemon Name'
               placeholder='eg; Bulbasaur etc.,'
@@ -48,21 +48,33 @@ class AddPokemonForm extends React.Component {
               defaultValue={pokemonType}
               onChangeValue={this.onChangePokemonType}
             />
-            <TextInput
+            <Input
+              type='text'
               controlId='pokemon-category'
               labelName='Pokemon Category'
               placeholder='eg; Mouse, Rabbit etc.,'
             />
-            <TextInput
+            <Input
+              type='text'
               controlId='pokemon-image'
               labelName='Pokemon Image'
               placeholder='eg; https://domain.com/image.png'
             />
-            <TextInputWithButton
+            <Input
+              type='text-with-button'
               controlId='pokemon-abilities'
               labelName='Pokemon Abilities'
               placeholder='eg; Change climate etc.,'
               buttonTitle='+ Add Abilities'
+            />
+            <Input
+              type='number'
+              controlId='pokemon-catch-rate'
+              labelName='Catch Rate'
+              placeholder='eg; 20'
+              unit='%'
+              maxNumber='200'
+              isDecimal
             />
           </Form>
         </Card.Body>
