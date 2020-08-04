@@ -28,6 +28,12 @@ a:hover {
   color: #fff;
 }
 
+.btn-primary {
+  color: #fff;
+  background-color: rgb(231, 73, 69) !important;
+  border-color: rgb(231, 73, 69) !important;
+}
+
 .white {
   color: #fff !important;
   font-family: Roboto;

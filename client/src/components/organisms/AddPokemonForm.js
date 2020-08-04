@@ -5,6 +5,7 @@ import { POKEMON_TYPE } from '../../constants'
 
 import TextInput from '../molecules/TextInput'
 import RadioInput from '../molecules/RadioInput'
+import TextInputWithButton from '../molecules/TextInputWithButton'
 
 class AddPokemonForm extends React.Component {
   constructor(props) {
@@ -16,14 +17,14 @@ class AddPokemonForm extends React.Component {
   }
 
   onChangePokemonType(e) {
-    console.log(e.target.value)
     this.setState({
       pokemonType: e.target.value
     })
   }
 
   render() {
-    const { pokemonType } = this.state 
+    const { pokemonType } = this.state
+    console.log(pokemonType)
     return (
       <Card
         bg='light'
@@ -57,10 +58,11 @@ class AddPokemonForm extends React.Component {
               labelName='Pokemon Image'
               placeholder='eg; https://domain.com/image.png'
             />
-            <TextInput
-              controlId='pokemon-image'
-              labelName='Pokemon Image'
-              placeholder='eg; https://domain.com/image.png'
+            <TextInputWithButton
+              controlId='pokemon-abilities'
+              labelName='Pokemon Abilities'
+              placeholder='eg; Change climate etc.,'
+              buttonTitle='+ Add Abilities'
             />
           </Form>
         </Card.Body>
