@@ -1,5 +1,6 @@
 import React from 'react'
 import { Card, Form, Row, Col, Badge } from 'react-bootstrap'
+import { FiX } from 'react-icons/fi'
 
 import { POKEMON_TYPE } from '../../constants'
 
@@ -25,6 +26,7 @@ class AddPokemonForm extends React.Component {
     this.onChangePokemonType = this.onChangePokemonType.bind(this)
     this.onChangeText = this.onChangeText.bind(this)
     this.onClickAddPokemonAbilities = this.onClickAddPokemonAbilities.bind(this)
+    this.onClickDeleteAbility = this.onClickDeleteAbility.bind(this)
   }
 
   onChangeText(e) {
@@ -80,6 +82,16 @@ class AddPokemonForm extends React.Component {
     }
   }
 
+  onClickDeleteAbility(ability, event) {
+    event.preventDefault()
+    console.log('delete')
+    const { pokemonAbilities } = this.state
+    const getAblitiyIndex = pokemonAbilities.indexOf(ability)
+    this.setState({
+      pokemonAbilities: this.state.pokemonAbilities.filter((_, i) => i !== getAblitiyIndex)
+    })
+  }
+
   renderPokemonAbilities() {
     const { pokemonAbilities } = this.state
     return (
@@ -89,7 +101,11 @@ class AddPokemonForm extends React.Component {
             {pokemonAbilities.map((ability, index) => {
               return (
                 <h5 key={index}>
-                  <Badge variant="primary" className='mr-2'>{ability}</Badge>
+                  <Badge variant="primary" className='mr-2'>
+                    {ability}
+                    {' '}
+                    <a href='#' onClick={(e) => this.onClickDeleteAbility(ability, e)}><FiX color='#fff' size={14} /></a>
+                  </Badge>
                 </h5>
               )
             })}
