@@ -104,7 +104,7 @@ class AddPokemonForm extends React.Component {
                   <Badge variant="primary" className='mr-2'>
                     {ability}
                     {' '}
-                    <a href='#' onClick={(e) => this.onClickDeleteAbility(ability, e)}><FiX color='#fff' size={14} /></a>
+                    <a href='!#' onClick={(e) => this.onClickDeleteAbility(ability, e)}><FiX color='#fff' size={14} /></a>
                   </Badge>
                 </h5>
               )
