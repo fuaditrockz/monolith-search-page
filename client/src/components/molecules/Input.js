@@ -14,20 +14,31 @@ export default class Input extends React.Component {
       buttonTitle,
       isDecimal,
       maxNumber,
-      unit
+      unit,
+      value,
+      onChange
     } = this.props
     switch (type) {
       case 'text':
-        return <Form.Control type={type} placeholder={placeholder} />
+        return (
+          <Form.Control
+            type={type}
+            placeholder={placeholder}
+            defaultValue={value}
+            onChange={onChange}
+          />
+        )
       case 'number':
         return (
           <InputGroup>
             <Form.Control
               type={type}
+              defaultValue={value}
               placeholder={placeholder}
               step={isDecimal && '0.01'}
               min={isDecimal && '0'}
               max={isDecimal && (maxNumber ? maxNumber : '100')}
+              onChange={onChange}
             />
             <InputGroup.Append>
               <InputGroup.Text>{unit}</InputGroup.Text>
@@ -37,7 +48,12 @@ export default class Input extends React.Component {
       case 'text-with-button':
         return (
           <InputGroup>
-            <Form.Control type="text" placeholder={placeholder} />
+            <Form.Control
+              type="text"
+              placeholder={placeholder}
+              defaultValue={value}
+              onChange={onChange}
+            />
             <InputGroup.Append>
               <Button variant="primary">{buttonTitle}</Button>
             </InputGroup.Append>
@@ -47,12 +63,21 @@ export default class Input extends React.Component {
         return (
           <Form.Control
             as="textarea"
+            defaultValue={value}
             aria-label="With textarea"
             placeholder={placeholder}
+            onChange={onChange}
           />
         )
       default:
-        return <Form.Control type='text' placeholder={placeholder} />
+        return (
+          <Form.Control
+            type='text'
+            placeholder={placeholder}
+            defaultValue={value}
+            onChange={onChange}
+          />
+        )
     }
   }
 
