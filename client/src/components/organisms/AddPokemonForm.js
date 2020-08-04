@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Form } from 'react-bootstrap'
+import { Card, Form, Row, Col, Badge } from 'react-bootstrap'
 
 import { POKEMON_TYPE } from '../../constants'
 
@@ -14,6 +14,7 @@ class AddPokemonForm extends React.Component {
       pokemonType: null,
       pokemonCategory: '',
       pokemonImage: '',
+      pokemonAbility: '',
       pokemonAbilities: [],
       pokemonCatchRate: '',
       pokemonHeight: '',
@@ -22,6 +23,7 @@ class AddPokemonForm extends React.Component {
     }
     this.onChangePokemonType = this.onChangePokemonType.bind(this)
     this.onChangeText = this.onChangeText.bind(this)
+    this.onClickAddPokemonAbilities = this.onClickAddPokemonAbilities.bind(this)
   }
 
   onChangeText(e) {
@@ -34,6 +36,9 @@ class AddPokemonForm extends React.Component {
         break
       case 'pokemon-image':
         this.setState({ pokemonImage: e.target.value })
+        break
+      case 'pokemon-abilities':
+        this.setState({ pokemonAbility: e.target.value })
         break
       case 'pokemon-catch-rate':
         this.setState({ pokemonCatchRate: e.target.value })
@@ -58,14 +63,47 @@ class AddPokemonForm extends React.Component {
     })
   }
 
+  onClickAddPokemonAbilities() {
+    const { pokemonAbility, pokemonAbilities } = this.state
+    if (pokemonAbility) {
+      this.setState({
+        pokemonAbility: '',
+        pokemonAbilities: [ ...pokemonAbilities, pokemonAbility ]
+      })
+      
+    } else {
+      return null
+    }
+  }
+
+  renderPokemonAbilities() {
+    const { pokemonAbilities } = this.state
+    return (
+      <Row className='mb-3'>
+        <Col>
+          <div className='abilities-list'>
+            {pokemonAbilities.map((ability, index) => {
+              return (
+                <h5 key={index}>
+                  <Badge variant="primary" className='mr-2'>{ability}</Badge>
+                </h5>
+              )
+            })}
+          </div>
+        </Col>
+      </Row>
+    )
+  }
+
   render() {
     const {
       pokemonType,
       pokemonName,
       pokemonCategory,
+      pokemonAbilities,
+      pokemonAbility,
       pokemonImage,
       pokemonCatchRate,
-      pokemonAbilities,
       pokemonHeight,
       pokemonWeight,
       pokemonDescription
@@ -84,7 +122,7 @@ class AddPokemonForm extends React.Component {
           <Form>
             <Input
               type='text'
-              value={pokemonName}
+              defaultValue={pokemonName}
               controlId='pokemon-name'
               labelName='Pokemon Name'
               placeholder='eg; Bulbasaur etc.,'
@@ -99,7 +137,7 @@ class AddPokemonForm extends React.Component {
             />
             <Input
               type='text'
-              value={pokemonCategory}
+              defaultValue={pokemonCategory}
               controlId='pokemon-category'
               labelName='Pokemon Category'
               placeholder='eg; Mouse, Rabbit etc.,'
@@ -107,7 +145,7 @@ class AddPokemonForm extends React.Component {
             />
             <Input
               type='text'
-              value={pokemonImage}
+              defaultValue={pokemonImage}
               controlId='pokemon-image'
               labelName='Pokemon Image'
               placeholder='eg; https://domain.com/image.png'
@@ -115,14 +153,18 @@ class AddPokemonForm extends React.Component {
             />
             <Input
               type='text-with-button'
+              value={pokemonAbility}
               controlId='pokemon-abilities'
               labelName='Pokemon Abilities'
               placeholder='eg; Change climate etc.,'
               buttonTitle='+ Add Abilities'
+              onChange={this.onChangeText}
+              onClickInputButton={this.onClickAddPokemonAbilities}
             />
+            {pokemonAbilities.length === 0 ? null : this.renderPokemonAbilities()}
             <Input
               type='number'
-              value={pokemonCatchRate}
+              defaultValue={pokemonCatchRate}
               controlId='pokemon-catch-rate'
               labelName='Catch Rate'
               placeholder='eg; 20'
@@ -133,7 +175,7 @@ class AddPokemonForm extends React.Component {
             />
             <Input
               type='number'
-              value={pokemonHeight}
+              defaultValue={pokemonHeight}
               controlId='pokemon-height'
               labelName='Height'
               placeholder='eg; 20.5'
@@ -144,7 +186,7 @@ class AddPokemonForm extends React.Component {
             />
             <Input
               type='number'
-              value={pokemonWeight}
+              defaultValue={pokemonWeight}
               controlId='pokemon-weight'
               labelName='Weight'
               placeholder='eg; 20'
@@ -155,7 +197,7 @@ class AddPokemonForm extends React.Component {
             />
             <Input
               type='free-text'
-              value={pokemonDescription}
+              defaultValue={pokemonDescription}
               controlId='pokemon-description'
               labelName='Description'
               placeholder='Some description here...'
