@@ -43,6 +43,14 @@ export default class Input extends React.Component {
             </InputGroup.Append>
           </InputGroup>
         )
+      case 'free-text':
+        return (
+          <Form.Control
+            as="textarea"
+            aria-label="With textarea"
+            placeholder={placeholder}
+          />
+        )
       default:
         return <Form.Control type='text' placeholder={placeholder} />
     }

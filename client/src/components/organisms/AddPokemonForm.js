@@ -10,6 +10,7 @@ class AddPokemonForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      pokemonName: '',
       pokemonType: null
     }
     this.onChangePokemonType = this.onChangePokemonType.bind(this)
@@ -30,7 +31,7 @@ class AddPokemonForm extends React.Component {
         key='form'
         text='dark'
         style={{ width: '100%' }}
-        className="mb-2"
+        className="mb-5"
       >
         <Card.Header>Add Pokemon</Card.Header>
         <Card.Body>
@@ -75,6 +76,30 @@ class AddPokemonForm extends React.Component {
               unit='%'
               maxNumber='200'
               isDecimal
+            />
+            <Input
+              type='number'
+              controlId='pokemon-height'
+              labelName='Height'
+              placeholder='eg; 20.5'
+              unit='meters'
+              maxNumber='10000'
+              isDecimal
+            />
+            <Input
+              type='number'
+              controlId='pokemon-weight'
+              labelName='Weight'
+              placeholder='eg; 20'
+              unit='kilogram'
+              maxNumber='10000'
+              isDecimal
+            />
+            <Input
+              type='free-text'
+              controlId='pokemon-description'
+              labelName='Description'
+              placeholder='Some description here...'
             />
           </Form>
         </Card.Body>
