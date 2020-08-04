@@ -2,10 +2,9 @@ import React from 'react'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from 'react-router-dom'
-import { Container, Row, } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import Header from './components/organisms/Header'
 
 import HomeScreen from './containers/HomeScreen'
