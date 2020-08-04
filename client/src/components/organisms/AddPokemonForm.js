@@ -19,7 +19,8 @@ class AddPokemonForm extends React.Component {
       pokemonCatchRate: '',
       pokemonHeight: '',
       pokemonWeight: '',
-      pokemonDescription: ''
+      pokemonDescription: '',
+      isAddButtonDisabled: true
     }
     this.onChangePokemonType = this.onChangePokemonType.bind(this)
     this.onChangeText = this.onChangeText.bind(this)
@@ -38,7 +39,10 @@ class AddPokemonForm extends React.Component {
         this.setState({ pokemonImage: e.target.value })
         break
       case 'pokemon-abilities':
-        this.setState({ pokemonAbility: e.target.value })
+        this.setState({
+          pokemonAbility: e.target.value,
+          isAddButtonDisabled: e.target.value ? false : true
+        })
         break
       case 'pokemon-catch-rate':
         this.setState({ pokemonCatchRate: e.target.value })
@@ -68,9 +72,9 @@ class AddPokemonForm extends React.Component {
     if (pokemonAbility) {
       this.setState({
         pokemonAbility: '',
-        pokemonAbilities: [ ...pokemonAbilities, pokemonAbility ]
+        pokemonAbilities: [ ...pokemonAbilities, pokemonAbility ],
+        isAddButtonDisabled: true
       })
-      
     } else {
       return null
     }
@@ -106,7 +110,8 @@ class AddPokemonForm extends React.Component {
       pokemonCatchRate,
       pokemonHeight,
       pokemonWeight,
-      pokemonDescription
+      pokemonDescription,
+      isAddButtonDisabled
     } = this.state
 
     return (
@@ -160,6 +165,7 @@ class AddPokemonForm extends React.Component {
               buttonTitle='+ Add Abilities'
               onChange={this.onChangeText}
               onClickInputButton={this.onClickAddPokemonAbilities}
+              isButtonDisabled={isAddButtonDisabled}
             />
             {pokemonAbilities.length === 0 ? null : this.renderPokemonAbilities()}
             <Input

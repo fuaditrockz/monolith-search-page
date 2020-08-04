@@ -18,7 +18,8 @@ export default class Input extends React.Component {
       defaultValue,
       value,
       onChange,
-      onClickInputButton
+      onClickInputButton,
+      isButtonDisabled
     } = this.props
     switch (type) {
       case 'text':
@@ -60,7 +61,13 @@ export default class Input extends React.Component {
               onChange={onChange}
             />
             <InputGroup.Append>
-              <Button variant="primary" onClick={onClickInputButton}>{buttonTitle}</Button>
+              <Button
+                variant="primary"
+                onClick={onClickInputButton}
+                disabled={isButtonDisabled}
+              >
+                {buttonTitle}
+              </Button>
             </InputGroup.Append>
           </InputGroup>
         )
