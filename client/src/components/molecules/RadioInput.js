@@ -13,10 +13,9 @@ const RadioInput = ({
   const renderValueList = (values) => {
     return values.map((type, index) => {
       return (
-        <Col md={2}>
+        <Col md={2} key={index}>
           <div className='radio-pokemon-type mb-3'>
             <Form.Check
-              key={index}
               type="radio"
               value={type.name}
               checked={defaultValue === type.name}
@@ -24,7 +23,7 @@ const RadioInput = ({
               id={type.name.toLowerCase()}
               onChange={onChangeValue}
             />
-            <img src={type.icon} width={20} />
+            <img src={type.icon} width={20} alt={type.name} />
             <p className='mb-0 ml-1'>{type.name}</p>
           </div>
         </Col>
