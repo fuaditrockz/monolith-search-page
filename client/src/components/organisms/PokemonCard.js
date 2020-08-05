@@ -20,7 +20,11 @@ class PokemonCard extends React.Component {
     return (
       <Row>
         <Col className='pokemon-image'>
-          <img src='https://cdn.bulbagarden.net/upload/7/73/004Charmander.png' width={200} />
+          <img
+            src='https://cdn.bulbagarden.net/upload/7/73/004Charmander.png'
+            width={200}
+            alt='Pokemon'
+          />
         </Col>
       </Row>
     )
