@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Form, Row, Col, Badge } from 'react-bootstrap'
+import { Card, Form, Row, Col, Badge, Button } from 'react-bootstrap'
 import { FiX } from 'react-icons/fi'
 
 import { POKEMON_TYPE } from '../../constants'
@@ -27,6 +27,7 @@ class AddPokemonForm extends React.Component {
     this.onChangeText = this.onChangeText.bind(this)
     this.onClickAddPokemonAbilities = this.onClickAddPokemonAbilities.bind(this)
     this.onClickDeleteAbility = this.onClickDeleteAbility.bind(this)
+    this.onClickSaveButton = this.onClickSaveButton.bind(this)
   }
 
   onChangeText(e) {
@@ -92,6 +93,43 @@ class AddPokemonForm extends React.Component {
     })
   }
 
+  onClickSaveButton() {
+    const {
+      pokemonName,
+      pokemonType,
+      pokemonCategory,
+      pokemonAbilities,
+      pokemonCatchRate,
+      pokemonHeight,
+      pokemonWeight,
+      pokemonDescription
+    } = this.state
+
+    const dataSet = {
+      pokemonName,
+      pokemonType,
+      pokemonCategory,
+      pokemonAbilities,
+      pokemonCatchRate,
+      pokemonHeight,
+      pokemonWeight,
+      pokemonDescription
+    }
+
+    this.setState({
+      pokemonName: '',
+      pokemonType: '',
+      pokemonCategory: '',
+      pokemonAbilities: [],
+      pokemonCatchRate: '',
+      pokemonHeight: '',
+      pokemonWeight: '',
+      pokemonDescription: ''
+    })
+
+    console.log(dataSet)
+  }
+
   renderPokemonAbilities() {
     const { pokemonAbilities } = this.state
     return (
@@ -109,6 +147,45 @@ class AddPokemonForm extends React.Component {
                 </h5>
               )
             })}
+          </div>
+        </Col>
+      </Row>
+    )
+  }
+
+  renderSaveButton() {
+    const {
+      pokemonName,
+      pokemonType,
+      pokemonAbilities,
+      pokemonImage,
+      pokemonCatchRate,
+      pokemonHeight,
+      pokemonWeight
+    } = this.state
+
+    const isDisableToSave = (
+      !pokemonName
+      || !pokemonType
+      || pokemonAbilities.length === 0
+      || !pokemonImage
+      || !pokemonCatchRate
+      || !pokemonHeight
+      || !pokemonWeight
+    )
+
+    return (
+      <Row>
+        <Col>
+          <div className='centerized-item'>
+            <Button
+              variant={isDisableToSave ? 'secondary' : 'primary'}
+              size='lg'
+              disabled={isDisableToSave}
+              onClick={this.onClickSaveButton}
+            >
+              Save Pokemon
+            </Button>
           </div>
         </Col>
       </Row>
@@ -143,7 +220,7 @@ class AddPokemonForm extends React.Component {
           <Form>
             <Input
               type='text'
-              defaultValue={pokemonName}
+              value={pokemonName}
               controlId='pokemon-name'
               labelName='Pokemon Name'
               placeholder='eg; Bulbasaur etc.,'
@@ -158,7 +235,7 @@ class AddPokemonForm extends React.Component {
             />
             <Input
               type='text'
-              defaultValue={pokemonCategory}
+              value={pokemonCategory}
               controlId='pokemon-category'
               labelName='Pokemon Category'
               placeholder='eg; Mouse, Rabbit etc.,'
@@ -166,7 +243,7 @@ class AddPokemonForm extends React.Component {
             />
             <Input
               type='text'
-              defaultValue={pokemonImage}
+              value={pokemonImage}
               controlId='pokemon-image'
               labelName='Pokemon Image'
               placeholder='eg; https://domain.com/image.png'
@@ -186,7 +263,7 @@ class AddPokemonForm extends React.Component {
             {pokemonAbilities.length === 0 ? null : this.renderPokemonAbilities()}
             <Input
               type='number'
-              defaultValue={pokemonCatchRate}
+              value={pokemonCatchRate}
               controlId='pokemon-catch-rate'
               labelName='Catch Rate'
               placeholder='eg; 20'
@@ -197,7 +274,7 @@ class AddPokemonForm extends React.Component {
             />
             <Input
               type='number'
-              defaultValue={pokemonHeight}
+              value={pokemonHeight}
               controlId='pokemon-height'
               labelName='Height'
               placeholder='eg; 20.5'
@@ -208,7 +285,7 @@ class AddPokemonForm extends React.Component {
             />
             <Input
               type='number'
-              defaultValue={pokemonWeight}
+              value={pokemonWeight}
               controlId='pokemon-weight'
               labelName='Weight'
               placeholder='eg; 20'
@@ -219,12 +296,13 @@ class AddPokemonForm extends React.Component {
             />
             <Input
               type='free-text'
-              defaultValue={pokemonDescription}
+              value={pokemonDescription}
               controlId='pokemon-description'
               labelName='Description'
               placeholder='Some description here...'
               onChange={this.onChangeText}
             />
+            {this.renderSaveButton()}
           </Form>
         </Card.Body>
       </Card>
