@@ -80,7 +80,7 @@ export class AddPokemonContextProvider extends React.Component {
     })
   }
 
-  onClickSaveButton() {
+  async onClickSaveButton() {
     const {
       pokemonName,
       pokemonType,
@@ -94,16 +94,26 @@ export class AddPokemonContextProvider extends React.Component {
     } = this.state
 
     const dataSet = {
-      pokemonName,
-      pokemonType,
-      pokemonCategory,
-      pokemonImage,
-      pokemonAbilities,
-      pokemonCatchRate,
-      pokemonHeight,
-      pokemonWeight,
-      pokemonDescription
+      name: pokemonName,
+      type: pokemonType,
+      category: pokemonCategory,
+      image_url: pokemonImage,
+      abilities: pokemonAbilities,
+      catch_rate: pokemonCatchRate,
+      height: pokemonHeight,
+      weight: pokemonWeight,
+      description: pokemonDescription,
+      product_by: 'Pokémon'
     }
+
+    await fetch('/v1/pokemon', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dataSet)
+    })
+    .then(response => response.json())
+    .then(data => console.log('Output', data))
+    .catch(err => console.log('Error', err))
 
     this.setState({
       pokemonName: '',
