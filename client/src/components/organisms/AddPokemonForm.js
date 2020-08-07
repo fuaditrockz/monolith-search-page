@@ -16,20 +16,33 @@ class AddPokemonForm extends React.Component {
         className="mb-5"
       >
         <AddPokemonContextConsumer>
-          {context => (
-            <Modal
-              title='Add Pokemon'
-              onClose={context.onCloseModal}
-              isModalShow={context.state.isModalShow}
-            >
-              <p>
-                {context.state.savedPokemonReponse.message}
-              </p>
-              <p>
-                {context.state.savedPokemonReponse.objectId}
-              </p>
-            </Modal>
-          )}
+          {context => {
+            const { state, onCloseModal } = context
+            const { isModalShow, savedPokemonReponse } = state
+            return (
+              <Modal
+                title='Add Pokemon'
+                onClose={onCloseModal}
+                isModalShow={isModalShow}
+              >
+                {savedPokemonReponse.error && (
+                  <h4 className='danger'>Error</h4>
+                )}
+                <p>
+                  {
+                    !savedPokemonReponse.error
+                    ? savedPokemonReponse.message
+                    : savedPokemonReponse.message.message
+                  }
+                </p>
+                {!savedPokemonReponse.error && (
+                  <p>
+                    {savedPokemonReponse.objectId}
+                  </p>
+                )}
+              </Modal>
+            )
+          }}
         </AddPokemonContextConsumer>
         <Card.Header>Add Pokemon</Card.Header>
         <Card.Body>

@@ -3,20 +3,44 @@ import React from 'react'
 const AddPokemonContext = React.createContext()
 
 export class AddPokemonContextProvider extends React.Component {
-  state = {
-    pokemonName: '',
-    pokemonType: null,
-    pokemonCategory: '',
-    pokemonImage: '',
-    pokemonAbility: '',
-    pokemonAbilities: [],
-    pokemonCatchRate: '',
-    pokemonHeight: '',
-    pokemonWeight: '',
-    pokemonDescription: '',
-    isAddButtonDisabled: true,
-    savedPokemonReponse: {},
-    isModalShow: false
+  constructor(props) {
+    super(props)
+    this.state = {
+      pokemonName: '',
+      pokemonType: null,
+      pokemonCategory: '',
+      pokemonImage: '',
+      pokemonAbility: '',
+      pokemonAbilities: [],
+      pokemonCatchRate: '',
+      pokemonHeight: '',
+      pokemonWeight: '',
+      pokemonDescription: '',
+      isAddButtonDisabled: true,
+      savedPokemonReponse: {},
+      isModalShow: false
+    }
+    this.clearInput = this.clearInput.bind(this)
+    this.onChangeText = this.onChangeText.bind(this)
+    this.onChangePokemonType = this.onChangePokemonType.bind(this)
+    this.onClickAddAbility = this.onClickAddAbility.bind(this)
+    this.onClickDeleteAbility = this.onClickDeleteAbility.bind(this)
+    this.onClickSaveButton = this.onClickSaveButton.bind(this)
+    this.onCloseModal = this.onCloseModal.bind(this)
+  }
+
+  clearInput() {
+    this.setState({
+      pokemonName: '',
+      pokemonType: '',
+      pokemonCategory: '',
+      pokemonImage: '',
+      pokemonAbilities: [],
+      pokemonCatchRate: '',
+      pokemonHeight: '',
+      pokemonWeight: '',
+      pokemonDescription: ''
+    })
   }
 
   onChangeText(e) {
@@ -92,7 +116,8 @@ export class AddPokemonContextProvider extends React.Component {
       pokemonImage,
       pokemonHeight,
       pokemonWeight,
-      pokemonDescription
+      pokemonDescription,
+      savedPokemonReponse
     } = this.state
 
     const dataSet = {
@@ -116,18 +141,12 @@ export class AddPokemonContextProvider extends React.Component {
     .then(response => response.json())
     .then(data => {
       console.log(data)
+      if(!data.error) {
+        this.clearInput()
+      }
       this.setState({
         savedPokemonReponse: data,
-        isModalShow: true,
-        pokemonName: '',
-        pokemonType: '',
-        pokemonCategory: '',
-        pokemonImage: '',
-        pokemonAbilities: [],
-        pokemonCatchRate: '',
-        pokemonHeight: '',
-        pokemonWeight: '',
-        pokemonDescription: ''
+        isModalShow: true
       })
     })
     .catch(err => {
@@ -137,8 +156,6 @@ export class AddPokemonContextProvider extends React.Component {
         isModalShow: true
       })
     })
-
-    console.log(dataSet)
   }
 
   onCloseModal() {
@@ -152,12 +169,12 @@ export class AddPokemonContextProvider extends React.Component {
       <AddPokemonContext.Provider
         value={{
           state: this.state,
-          onChangeText: this.onChangeText.bind(this),
-          onChangePokemonType: this.onChangePokemonType.bind(this),
-          onClickAddAbility: this.onClickAddAbility.bind(this),
-          onClickDeleteAbility: this.onClickDeleteAbility.bind(this),
-          onClickSaveButton: this.onClickSaveButton.bind(this),
-          onCloseModal: this.onCloseModal.bind(this)
+          onChangeText: this.onChangeText,
+          onChangePokemonType: this.onChangePokemonType,
+          onClickAddAbility: this.onClickAddAbility,
+          onClickDeleteAbility: this.onClickDeleteAbility,
+          onClickSaveButton: this.onClickSaveButton,
+          onCloseModal: this.onCloseModal,
         }}
       >
         {this.props.children}
