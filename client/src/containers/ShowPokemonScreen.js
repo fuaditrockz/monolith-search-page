@@ -30,7 +30,7 @@ export default class ShowPokemonScreen extends React.Component {
   }
 
   render() {
-    console.log('THIS PROPS', this.props.location)
+    console.log(this.props.location)
     return (
       <PokemonContextProvider>
         {this.renderPokemonDetail()}
