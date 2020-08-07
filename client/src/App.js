@@ -9,6 +9,7 @@ import Header from './components/organisms/Header'
 
 import HomeScreen from './containers/HomeScreen'
 import AddPokemonScreen from './containers/AddPokemonScreen'
+import ShowPokemonScreen from './containers/ShowPokemonScreen'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/add-pokemon'>
           <AddPokemonScreen />
         </Route>
+        <Route path='/:pokemon_id' component={ShowPokemonScreen} />
         <Route path='/'>
           <HomeScreen />
         </Route>
