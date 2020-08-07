@@ -116,8 +116,7 @@ export class AddPokemonContextProvider extends React.Component {
       pokemonImage,
       pokemonHeight,
       pokemonWeight,
-      pokemonDescription,
-      savedPokemonReponse
+      pokemonDescription
     } = this.state
 
     const dataSet = {
