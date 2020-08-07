@@ -56,6 +56,16 @@ a:hover {
   font-weight: 300;
 }
 
+.loading-container {
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
 .header {
   min-height: 6vmin;
   padding: 20px 0 12px;
@@ -99,13 +109,24 @@ a:hover {
 }
 
 .pokemon-card {
+  cursor: pointer;
   height: 350px;
   padding: 20px;
   background-color: #ff7979;
+  transition: all 0.5s;
+}
+
+.pokemon-card:hover {
+  background-color: #4cabf8;
 }
 
 .pokemon-card:nth-child(even)  {
   background-color: #f9ca24;
+  transition: all 0.5s;
+}
+
+.pokemon-card:nth-child(even):hover  {
+  background-color: #4cabf8;
 }
 
 .pokemon-card-footer {
