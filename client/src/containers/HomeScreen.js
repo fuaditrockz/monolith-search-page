@@ -6,15 +6,6 @@ import PokemonCard from '../components/organisms/PokemonCard'
 import Loading from '../components/atoms/Loading'
 
 class HomeScreen extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      pokemon: [],
-      error: {},
-      isLoading: true
-    }
-  }
-
   renderAllPokemon() {
     return (
       <PokemonContextConsumer>
