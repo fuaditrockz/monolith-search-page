@@ -5,7 +5,7 @@ exports.GET_RESPONSE = {
       statusCode: 200,
       message: `Success GET ${isSingleItem ? '' : 'all'} ${payloadName}`,
       total: isSingleItem ? 1 : payload.length,
-      data: isSingleItem ? payload : [payload]
+      data: payload
     }
   },
   error: err => {
