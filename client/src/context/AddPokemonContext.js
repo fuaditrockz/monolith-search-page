@@ -14,7 +14,9 @@ export class AddPokemonContextProvider extends React.Component {
     pokemonHeight: '',
     pokemonWeight: '',
     pokemonDescription: '',
-    isAddButtonDisabled: true
+    isAddButtonDisabled: true,
+    savedPokemonReponse: {},
+    isModalShow: false
   }
 
   onChangeText(e) {
@@ -112,22 +114,37 @@ export class AddPokemonContextProvider extends React.Component {
       body: JSON.stringify(dataSet)
     })
     .then(response => response.json())
-    .then(data => console.log('Output', data))
-    .catch(err => console.log('Error', err))
-
-    this.setState({
-      pokemonName: '',
-      pokemonType: '',
-      pokemonCategory: '',
-      pokemonImage: '',
-      pokemonAbilities: [],
-      pokemonCatchRate: '',
-      pokemonHeight: '',
-      pokemonWeight: '',
-      pokemonDescription: ''
+    .then(data => {
+      console.log(data)
+      this.setState({
+        savedPokemonReponse: data,
+        isModalShow: true,
+        pokemonName: '',
+        pokemonType: '',
+        pokemonCategory: '',
+        pokemonImage: '',
+        pokemonAbilities: [],
+        pokemonCatchRate: '',
+        pokemonHeight: '',
+        pokemonWeight: '',
+        pokemonDescription: ''
+      })
+    })
+    .catch(err => {
+      console.log(err)
+      this.setState({
+        savedPokemonReponse: err,
+        isModalShow: true
+      })
     })
 
     console.log(dataSet)
+  }
+
+  onCloseModal() {
+    this.setState({
+      isModalShow: false
+    })
   }
 
   render() {
@@ -139,7 +156,8 @@ export class AddPokemonContextProvider extends React.Component {
           onChangePokemonType: this.onChangePokemonType.bind(this),
           onClickAddAbility: this.onClickAddAbility.bind(this),
           onClickDeleteAbility: this.onClickDeleteAbility.bind(this),
-          onClickSaveButton: this.onClickSaveButton.bind(this)
+          onClickSaveButton: this.onClickSaveButton.bind(this),
+          onCloseModal: this.onCloseModal.bind(this)
         }}
       >
         {this.props.children}
