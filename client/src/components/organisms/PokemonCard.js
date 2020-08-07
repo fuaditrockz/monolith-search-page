@@ -3,6 +3,7 @@ import {
   Col,
   Row
 } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 class PokemonCard extends React.Component {
   renderHeader() {
@@ -50,14 +51,24 @@ class PokemonCard extends React.Component {
   }
 
   render() {
+    const { pokemon_id } = this.props
     return (
       <Col
         className='pokemon-card'
         md={4}
       >
-        {this.renderHeader()}
-        {this.renderBody()}
-        {this.renderFooter()}
+        <Link to={{
+          pathname: `/${pokemon_id}`,
+          state: {
+            id: pokemon_id
+          }
+        }}>
+          <>
+            {this.renderHeader()}
+            {this.renderBody()}
+            {this.renderFooter()}
+          </>
+        </Link>
       </Col>
     )
   }
