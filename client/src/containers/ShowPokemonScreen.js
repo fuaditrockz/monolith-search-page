@@ -1,40 +1,20 @@
 import React from 'react'
 import { Container, Row } from 'react-bootstrap'
 
-import { PokemonContextConsumer, PokemonContextProvider } from '../context/PokemonContext'
-
-import Loading from '../components/atoms/Loading'
+import { PokemonContextProvider } from '../context/PokemonContext'
+import PokemonDetail from '../components/organisms/PokemonDetail'
 
 export default class ShowPokemonScreen extends React.Component {
-  renderPokemonDetail() {
-    const { id } = this.props.location.state
-    return (
-      <PokemonContextConsumer>
-        {context => {
-          const pokemon = context.getPokemonDetail(id)
-          console.log(pokemon)
-          return (
-            <Container className='mt-5'>
-              <Row>
-                {!pokemon ? (
-                  <Loading />
-                ) : (
-                  <h1>{pokemon.name}</h1>
-                )}
-              </Row>
-            </Container>
-          )
-        }}
-      </PokemonContextConsumer>
-    )
-  }
-
   render() {
     console.log(this.props.location)
     return (
-      <PokemonContextProvider>
-        {this.renderPokemonDetail()}
-      </PokemonContextProvider>
+      <Container className='mt-5'>
+        <Row>
+          <PokemonContextProvider>
+            <PokemonDetail pokemonId={this.props.location.state.id} />
+          </PokemonContextProvider>
+        </Row>
+      </Container>
     )
   }
 }

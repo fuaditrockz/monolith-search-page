@@ -11,6 +11,10 @@ code {
     monospace;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: Roboto;
+}
+
 a {
   color: #353b48 !important;
 }
@@ -183,4 +187,30 @@ a:hover {
 
 .radio-pokemon-type:hover {
   border-color: #ff7979;
+}
+
+.pd-container {
+
+}
+
+.pd-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: #c3c3c3 solid 0.5px;
+}
+
+.pd-other-detail {
+  display: block;
+  border: #c3c3c3 solid 0.5px;
+  padding: 5px 10px 0px;
+  border-radius: 10px;
+}
+
+.pd-other-detail p {
+  font-size: 14px;
+}
+
+.pd-other-detail h6 span {
+  font-size: 12px;
 }
