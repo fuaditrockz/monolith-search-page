@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col, Form } from 'react-bootstrap'
 
-import InputLabel from '../atoms/InputLabel'
+import Label from '../atoms/Label'
 
 const RadioInput = ({
   controlId,
@@ -34,7 +34,7 @@ const RadioInput = ({
   return (
     <fieldset>
       <Form.Group as={Row} controlId={controlId}>
-        <InputLabel title={labelName} as="legend" column sm={2} />
+        <Label title={labelName} as="legend" column sm={2} />
         <Col sm={12}>
           <Row>
             {renderValueList(radioValues)}

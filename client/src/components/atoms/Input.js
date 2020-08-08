@@ -4,7 +4,7 @@ import {
   InputGroup,
   Button
 } from 'react-bootstrap'
-import InputLabel from '../atoms/InputLabel'
+import Label from './Label'
 
 export default class Input extends React.Component {
   renderInput() {
@@ -99,7 +99,7 @@ export default class Input extends React.Component {
     const { controlId, labelName } = this.props    
     return (
       <Form.Group controlId={controlId}>
-        <InputLabel title={labelName} />
+        <Label title={labelName} />
         {this.renderInput()}
       </Form.Group>
     )
