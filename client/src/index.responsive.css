@@ -3,11 +3,15 @@
     height: 10vmin;
   }
 
+  .display-none {
+    display: none;
+  }
+
   .pokedex-title {
     font-size: 30px;
   }
 
-  .logo-wrapper .pl-5 {
+  .logo-wrapper .row {
     padding-left: 20px !important;
   }
 
