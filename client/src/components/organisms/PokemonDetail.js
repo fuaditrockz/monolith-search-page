@@ -103,7 +103,7 @@ export default class PokemonDetail extends React.Component {
     )
 
     return (
-      <Card>
+      <Card className='mb-5'>
         <Card.Header as="h5">{name}</Card.Header>
         <Card.Body>
           <Container className='pd-container'>

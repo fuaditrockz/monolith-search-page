@@ -4,8 +4,6 @@ import {
   Switch,
   Route
 } from 'react-router-dom'
-import { Container } from 'react-bootstrap'
-import Header from './components/organisms/Header'
 
 import HomeScreen from './containers/HomeScreen'
 import AddPokemonScreen from './containers/AddPokemonScreen'

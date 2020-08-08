@@ -10,4 +10,17 @@
   .logo-wrapper .pl-5 {
     padding-left: 20px !important;
   }
+
+  .pd-container {
+    padding: 0 !important;
+  }
+
+  .pd-image {
+    border-right: none;
+    padding: 20px 0 30px;
+  }
+
+  .container .mt-5 {
+    margin-top: 1rem !important;
+  }
 }

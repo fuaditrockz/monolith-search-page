@@ -37,10 +37,10 @@ class PokemonCard extends React.Component {
     const { type, product } = this.props
     return (
       <Row className='pl-3 pr-3 pokemon-card-footer'>
-        <Col md={6} className='pokemon-type'>
+        <Col md={6} xs={6} className='pokemon-type'>
           <h5 className='white thin'>{type}</h5>
         </Col>
-        <Col md={6} className='pokemon-sign'>
+        <Col md={6} xs={6} className='pokemon-sign'>
           <div>
             <div className='mini-rect mr-2' /> 
             <h5 className='white thin'>{product}</h5>
