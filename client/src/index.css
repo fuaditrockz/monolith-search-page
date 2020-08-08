@@ -70,10 +70,15 @@ a:hover {
   text-align: center;
 }
 
-.header {
-  min-height: 6vmin;
-  padding: 20px 0 12px;
-  background-color: white;
+.header-container {
+  background-color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  padding-top: 12px;
+  padding-bottom: 8px;
   border-bottom: #c8d6e5 solid 0.2px;
 }
 
@@ -187,10 +192,6 @@ a:hover {
 
 .radio-pokemon-type:hover {
   border-color: #ff7979;
-}
-
-.pd-container {
-
 }
 
 .pd-image {
