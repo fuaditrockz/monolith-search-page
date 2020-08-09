@@ -8,7 +8,7 @@ export class SearchPokemonContextProvider extends React.Component {
     this.state = {
       searchInputValue: '',
       filteredPokemon: [],
-      isNotFound: true
+      searchStatus: 'idle'
     }
     this.onChangeSearchInput = this.onChangeSearchInput.bind(this)
   }
@@ -21,17 +21,18 @@ export class SearchPokemonContextProvider extends React.Component {
         const { data } = payload
         this.setState({
           filteredPokemon: [...data],
-          isNotFound: false
+          searchStatus: 'result-found'
         })
       })
       .catch(error => {
         this.setState({
-          isNotFound: true
+          searchStatus: 'no-result'
         })
       })
     } else {
+      console.log('Doesnt have name')
       this.setState({
-        isNotFound: true
+        searchStatus: 'idle'
       })
     }
   }
@@ -39,11 +40,12 @@ export class SearchPokemonContextProvider extends React.Component {
   onChangeSearchInput(e) {
     console.log(e.target.value)
     this.setState({
-      searchInputValue: e.target.value
+      searchInputValue: e.target.value,
+      searchStatus: 'searching'
     })
     setTimeout(() => {
       this.getFilteredPokemon(this.state.searchInputValue)
-    }, 1000);
+    }, 2000);
   }
 
   render() {
