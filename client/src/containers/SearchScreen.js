@@ -1,17 +1,20 @@
 import React from 'react'
 import { Row, Container } from 'react-bootstrap'
+
+import { SearchPokemonContextProvider } from '../context/SearchPokemonContext'
 import Header from '../components/organisms/Header'
+import FilteredPokemonSearch from '../components/organisms/FilteredPokemonSearch'
 
 export default class SearchScreen extends React.Component {
   render() {
     return (
       <Container fluid>
-        <Header isSearchHeader />
-        <Container>
+        <SearchPokemonContextProvider>
+          <Header isSearchHeader />
           <Row>
-            <h1>Hello World</h1>
+            <FilteredPokemonSearch />
           </Row>
-        </Container>
+        </SearchPokemonContextProvider>
       </Container>
     )
   }
