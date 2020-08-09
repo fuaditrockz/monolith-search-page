@@ -38,7 +38,7 @@ export class PokemonContextProvider extends React.Component {
       })
       .catch(error => {
         console.error('There was an error!', error);
-      });
+      })
   }
 
   render() {
