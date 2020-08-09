@@ -52,7 +52,6 @@ export class PokemonContextProvider extends React.Component {
   }
 
   onChangeSearchInput(e) {
-    console.log(e.target.value)
     this.setState({
       searchInputValue: e.target.value,
       searchStatus: 'searching'
