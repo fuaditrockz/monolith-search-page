@@ -41,3 +41,19 @@ exports._getAllPokemon = async () => {
     allPokemon
   )
 }
+
+exports._getPokemonbyName = async query => {
+  const dataResult = await PokemonModel.find(
+    {'name': { $regex: '^' + query, $options: 'i' }}
+  )
+
+  if (dataResult.length === 0) {
+    return GET_RESPONSE.error('Not found')
+  }
+
+  return GET_RESPONSE.success(
+    false,
+    query,
+    dataResult
+  )
+}
