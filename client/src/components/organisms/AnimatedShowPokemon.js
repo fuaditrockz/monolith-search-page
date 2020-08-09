@@ -2,8 +2,8 @@ import React from 'react'
 import { Container, Row } from 'react-bootstrap'
 import { AnimatedRoute } from 'react-router-transition'
 
-import { PokemonContextConsumer } from '../context/PokemonContext'
-import PokemonDetail from '../components/organisms/PokemonDetail'
+import { PokemonContextConsumer } from '../../context/PokemonContext'
+import PokemonDetail from '../molecules/PokemonDetail'
 
 const sidebarTransition = {
   atEnter: {
@@ -17,11 +17,8 @@ const sidebarTransition = {
   },
 }
 
-class ShowPokemonScreen extends React.Component {
+class ShowPokemon extends React.Component {
   render() {
-    if(!this.props.location.state) {
-      return null
-    }
     return (
       <Container fluid>
         <Container>
@@ -37,7 +34,7 @@ class ShowPokemonScreen extends React.Component {
   }
 }
 
-export default class AnimatedShowPokemonScreen extends React.Component {
+export default class AnimatedShowPokemon extends React.Component {
   render() {
     const { screenName } = this.props
     return (
@@ -56,7 +53,7 @@ export default class AnimatedShowPokemonScreen extends React.Component {
           >
             <AnimatedRoute
               path={screenName ? `/${screenName}/:pokemon_id` : '/:pokemon_id'}
-              component={ShowPokemonScreen}
+              component={ShowPokemon}
               mapStyles={styles => {
                 return {
                   transform: `

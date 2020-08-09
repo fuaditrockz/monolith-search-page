@@ -4,7 +4,7 @@ import { Container, Row, } from 'react-bootstrap'
 import { PokemonContextProvider } from '../context/PokemonContext'
 import AllPokemonCards from '../components/organisms/AllPokemonCards'
 import Header from '../components/organisms/Header'
-import AnimatedShowPokemonScreen from './ShowPokemonScreen'
+import AnimatedShowPokemon from '../components/organisms/AnimatedShowPokemon'
 
 class HomeScreen extends React.Component {
   render() {
@@ -15,7 +15,7 @@ class HomeScreen extends React.Component {
           <Row>
             <AllPokemonCards />
           </Row>
-          <AnimatedShowPokemonScreen />
+          <AnimatedShowPokemon />
         </Container>
       </PokemonContextProvider>
     )
