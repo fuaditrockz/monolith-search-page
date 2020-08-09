@@ -7,15 +7,12 @@ import PokemonDetail from '../components/organisms/PokemonDetail'
 
 const sidebarTransition = {
   atEnter: {
-    x: 0,
     y: 100
   },
   atLeave: {
-    x: 0,
     y: 100
   },
   atActive: {
-    x: 100,
     y: 0
   },
 }
