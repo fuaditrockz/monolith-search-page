@@ -3,24 +3,30 @@ import { Link } from 'react-router-dom'
 import { Row, Col, Container, InputGroup, FormControl } from 'react-bootstrap'
 import { FiPlusCircle, FiSearch } from 'react-icons/fi'
 
+import { SearchPokemonContextConsumer } from '../../context/SearchPokemonContext'
+
 import HeaderIcon from '../atoms/HeaderIcon'
 import logo from '../../assets/pokemon.svg'
 
 export default class Header extends React.Component {
   renderSearchInput() {
     return (
-      <InputGroup>
-        <InputGroup.Prepend>
-          <InputGroup.Text id="inputGroup-sizing-default">
-            <FiSearch size={20} />
-          </InputGroup.Text>
-        </InputGroup.Prepend>
-        <FormControl
-          aria-label="Default"
-          aria-describedby="inputGroup-sizing-default"
-          placeholder="Search Pokemon by name.,"
-        />
-      </InputGroup>
+      <SearchPokemonContextConsumer>
+        {context => (
+          <InputGroup>
+            <InputGroup.Prepend>
+              <InputGroup.Text id="inputGroup-sizing-default">
+                <FiSearch size={20} />
+              </InputGroup.Text>
+            </InputGroup.Prepend>
+            <FormControl
+              placeholder="Search Pokemon by name.,"
+              value={context.state.searchInputValue}
+              onChange={context.onChangeSearchInput}
+            />
+          </InputGroup>
+        )}
+      </SearchPokemonContextConsumer>
     )
   }
 
