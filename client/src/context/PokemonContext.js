@@ -16,7 +16,6 @@ export class PokemonContextProvider extends React.Component {
   }
 
   componentDidMount() {
-    console.log('running')
     this.getAllPokemon()
   }
 

@@ -98,7 +98,6 @@ export class AddPokemonContextProvider extends React.Component {
 
   onClickDeleteAbility(ability, event) {
     event.preventDefault()
-    console.log('delete')
     const { pokemonAbilities } = this.state
     const getAblitiyIndex = pokemonAbilities.indexOf(ability)
     this.setState({
@@ -139,7 +138,6 @@ export class AddPokemonContextProvider extends React.Component {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data)
       if(!data.error) {
         this.clearInput()
       }
@@ -149,7 +147,6 @@ export class AddPokemonContextProvider extends React.Component {
       })
     })
     .catch(err => {
-      console.log(err)
       this.setState({
         savedPokemonReponse: err,
         isModalShow: true

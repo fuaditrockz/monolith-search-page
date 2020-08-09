@@ -49,7 +49,6 @@ export class SearchPokemonContextProvider extends React.Component {
   }
 
   render() {
-    console.log(this.state.isNotFound)
     return (
       <SearchPokemonContext.Provider
         value={{
