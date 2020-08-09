@@ -8,15 +8,75 @@ export class PokemonContextProvider extends React.Component {
     this.state = {
       pokemon: [],
       error: {},
-      isLoading: true
+      isLoading: true,
+      pokemonDetailDisplay: 'none',
+      pokemonDetailZIndex: 0,
+      searchInputValue: '',
+      filteredPokemon: [],
+      searchStatus: 'idle'
     }
 
     this.getAllPokemon = this.getAllPokemon.bind(this)
     this.getPokemonDetail = this.getPokemonDetail.bind(this)
+    this.onClickPokemonCard = this.onClickPokemonCard.bind(this)
+    this.onClickClosePokemonCard = this.onClickClosePokemonCard.bind(this)
+    this.onChangeSearchInput = this.onChangeSearchInput.bind(this)
   }
 
   componentDidMount() {
     this.getAllPokemon()
+  }
+
+  async getFilteredPokemon(name) {
+    if(name) {
+      await fetch(`/v1/pokemon/name=${name}`)
+      .then(response => response.json())
+      .then(payload => {
+        const { data } = payload
+        this.setState({
+          filteredPokemon: [...data],
+          searchStatus: 'result-found'
+        })
+      })
+      .catch(error => {
+        this.setState({
+          searchStatus: 'no-result'
+        })
+      })
+    } else {
+      console.log('Doesnt have name')
+      this.setState({
+        searchStatus: 'idle'
+      })
+    }
+  }
+
+  onChangeSearchInput(e) {
+    console.log(e.target.value)
+    this.setState({
+      searchInputValue: e.target.value,
+      searchStatus: 'searching'
+    })
+    setTimeout(() => {
+      this.getFilteredPokemon(this.state.searchInputValue)
+    }, 2000);
+  }
+
+
+  onClickPokemonCard() {
+    this.setState({
+      pokemonDetailDisplay: 'block',
+      pokemonDetailZIndex: 100
+    })
+  }
+
+  onClickClosePokemonCard() {
+    setTimeout(() => {
+      this.setState({
+        pokemonDetailDisplay: 'none',
+        pokemonDetailZIndex: -100
+      })
+    }, 700);
   }
 
   getPokemonDetail(id) {
@@ -45,7 +105,10 @@ export class PokemonContextProvider extends React.Component {
       <PokemonContext.Provider
         value={{
           state: this.state,
-          getPokemonDetail: this.getPokemonDetail
+          getPokemonDetail: this.getPokemonDetail,
+          onClickPokemonCard: this.onClickPokemonCard,
+          onClickClosePokemonCard: this.onClickClosePokemonCard,
+          onChangeSearchInput: this.onChangeSearchInput
         }}
       >
         {this.props.children}

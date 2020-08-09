@@ -22,6 +22,7 @@ export default class AllPokemonCards extends React.Component {
                 type={poke.type}
                 product={poke.product_by}
                 pokemon_id={poke._id}
+                onClick={context.onClickPokemonCard}
               />
             )
           })

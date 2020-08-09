@@ -1,16 +1,16 @@
 import React from 'react'
 
-import { SearchPokemonContextConsumer } from '../../context/SearchPokemonContext'
+import { PokemonContextConsumer } from '../../context/PokemonContext'
 
 import PokemonCard from '../molecules/PokemonCard'
 import NoResult from '../atoms/NoResult'
 
 export default class FilteredPokemonSearch extends React.Component {
   render() {
+    const { screenLocation } = this.props
     return (
-      <SearchPokemonContextConsumer>
+      <PokemonContextConsumer>
         {context => {
-          console.log('get filtered', context.state.filteredPokemon)
           switch (context.state.searchStatus) {
             case 'idle':
               return (
@@ -43,6 +43,8 @@ export default class FilteredPokemonSearch extends React.Component {
                   type={poke.type}
                   product={poke.product_by}
                   pokemon_id={poke._id}
+                  onClick={context.onClickPokemonCard}
+                  screenLocation={screenLocation}
                 />
               ))
             default:
@@ -53,7 +55,7 @@ export default class FilteredPokemonSearch extends React.Component {
               ) 
           }
         }}
-      </SearchPokemonContextConsumer>
+      </PokemonContextConsumer>
     )
   }
 }

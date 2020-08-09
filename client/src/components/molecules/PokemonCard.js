@@ -51,18 +51,21 @@ class PokemonCard extends React.Component {
   }
 
   render() {
-    const { pokemon_id } = this.props
+    const { pokemon_id, onClick, screenLocation } = this.props
     return (
       <Col
         className='pokemon-card'
         md={4}
       >
-        <Link to={{
-          pathname: `/${pokemon_id}`,
-          state: {
-            id: pokemon_id
-          }
-        }}>
+        <Link
+          to={{
+            pathname: screenLocation ? `/search-pokemon/${pokemon_id}` : pokemon_id,
+            state: {
+              id: pokemon_id
+            }
+          }}
+          onClick={onClick}
+        >
           <>
             {this.renderHeader()}
             {this.renderBody()}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Row, Col, Container, InputGroup, FormControl } from 'react-bootstrap'
 import { FiPlusCircle, FiSearch } from 'react-icons/fi'
 
-import { SearchPokemonContextConsumer } from '../../context/SearchPokemonContext'
+import { PokemonContextConsumer } from '../../context/PokemonContext'
 
 import HeaderIcon from '../atoms/HeaderIcon'
 import logo from '../../assets/pokemon.svg'
@@ -11,7 +11,7 @@ import logo from '../../assets/pokemon.svg'
 export default class Header extends React.Component {
   renderSearchInput() {
     return (
-      <SearchPokemonContextConsumer>
+      <PokemonContextConsumer>
         {context => (
           <InputGroup>
             <InputGroup.Prepend>
@@ -26,7 +26,7 @@ export default class Header extends React.Component {
             />
           </InputGroup>
         )}
-      </SearchPokemonContextConsumer>
+      </PokemonContextConsumer>
     )
   }
 

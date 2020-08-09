@@ -1,5 +1,7 @@
 import React from 'react'
 import { Container, Row, Col, Card, Badge } from 'react-bootstrap'
+import { FiX } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 
 import { PokemonContextConsumer } from '../../context/PokemonContext'
 import Loading from '../atoms/Loading'
@@ -62,7 +64,8 @@ export default class PokemonDetail extends React.Component {
     )
   }
 
-  renderPokemonDetail(pokemon) {
+  renderPokemonDetail(pokemon, onClickClose) {
+    const { screenLocation } = this.props
     const {
       name,
       type,
@@ -104,7 +107,21 @@ export default class PokemonDetail extends React.Component {
 
     return (
       <Card className='mb-5'>
-        <Card.Header as="h5">{name}</Card.Header>
+        <Card.Header as="h5">
+          <Container>
+            <Row>
+              <Col>{name}</Col>
+              <Col style={{ textAlign: 'right' }}>
+              <Link
+                to={screenLocation.includes('search-pokemon') ? '/search-pokemon' : '/'}
+                onClick={onClickClose}
+              >
+                <FiX size={30} />
+              </Link>
+              </Col>
+            </Row>
+          </Container>
+        </Card.Header>
         <Card.Body>
           <Container className='pd-container'>
             <Row className='mb-4'>
@@ -133,11 +150,10 @@ export default class PokemonDetail extends React.Component {
       <PokemonContextConsumer>
         {context => {
           const pokemon = context.getPokemonDetail(pokemonId)
-          console.log(pokemon)
           return !pokemon ? (
             <Loading />
           ) : (
-            this.renderPokemonDetail(pokemon)
+            this.renderPokemonDetail(pokemon, context.onClickClosePokemonCard)
           )
         }}
       </PokemonContextConsumer>
