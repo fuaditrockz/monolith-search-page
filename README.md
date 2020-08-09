@@ -32,14 +32,14 @@ Stores everything related to static assets, such as images, fonts etc.
 ### components
 Following [Brad Frost methodology](https://atomicdesign.bradfrost.com/), the components are divided into sections in order to make it easier to group than the components themselves;
 
-**atoms**
-The smallest possible component separation that will be used over and over again.
+> **atoms**
+> The smallest possible component separation that will be used over and over again.
 
-**molecules**
-A combination of atomic components. But it's still small.
+> **molecules**
+> A combination of atomic components. But it's still small.
 
-**organisms**
-A combination of atom and molecules components. And have many codes inside this. They handled all of the container codes of the screen.
+> **organisms**
+> A combination of atom and molecules components. And have many codes inside this. They handled all of the container codes of the screen.
 
 ### constants
 Stores all of the reusable variable over this project.
@@ -49,3 +49,18 @@ Stores all of the wrapper of the AMO(Atoms, Molecules, Organisms) components. It
 
 ### context
 We use [Context API by React](https://reactjs.org/docs/context.html) as a state management here. So this folder will stores all of the state and state management of all of the components in this project. So, for sure you will rarely see functions inside AMO components, because almost everything is already placed in the context.
+
+## Server
+We used [Express](https://expressjs.com/) as a framework for handle our backend services. And [MongoDB](https://www.mongodb.com/) as a database language for our project.
+
+### config
+You can find all of the config of the server inside here. For example; database connection config.
+
+### helpers
+Stores all of the reusable codes over this project.
+
+### models
+Stores models of the data's table structure.
+
+### routes
+The main codes of the back-end project. Stores all of the routes inside here.
