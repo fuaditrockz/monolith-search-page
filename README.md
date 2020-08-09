@@ -60,7 +60,7 @@ You can find all of the config of the server inside here. For example; database 
 Stores all of the reusable codes over this project.
 
 ### models
-Stores models of the data's table structure.
+Stores models of the data's table structure. We used [mongoose](https://mongoosejs.com/) for the ODM and schema solution for our server.
 
 ### routes
 The main codes of the back-end project. Stores all of the routes inside here.
