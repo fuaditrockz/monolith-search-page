@@ -116,7 +116,7 @@ export default class PokemonDetail extends React.Component {
                 to={screenLocation.includes('search-pokemon') ? '/search-pokemon' : '/'}
                 onClick={onClickClose}
               >
-                <FiX size={30} />
+                <FiX size={30} color='#fff' />
               </Link>
               </Col>
             </Row>
